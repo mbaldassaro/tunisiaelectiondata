@@ -1,0 +1,29 @@
+---
+layout: maps
+category: en
+title: "Voter registration and voter turnout"
+subtitle: "Highlighting the level of actively registered voter turnout in the 2011 National Constituent Assembly Elections"
+language: en
+img: "active.png"
+map: "tunisia.map-76ss13lc"
+legend: false
+sources:
+  - title: "Actively passively and total  voter turnout"
+    url: "https://github.com/fwelections/tunisia-election-data/tree/master/2011data/misc"
+    description: "This CSV contains the number of actively registered voters who cast ballots and the total number of actively registered voters per electoral district. It was originally obtained from the National Constituent Assembly Report on the Elections (PDF), published by the Independent High Commission for Elections in February 2012 and converted to CSV by <a href='https://github.com/fwelections/tunisia-election-data'>OpenGovTN</a>."
+description: "<p>An actively registered voter is an eligible voter who confirmed his or her voter registration data at a designated voter registration center.  After an initially low turnout, the ISIE extended the voter registration deadline, increased the number of registration centers, and deployed mobile registration units,to register as many eligible voters as possible prior to the 2011 National Constituent Assembly elections.
+According to statistics published by the ISIE on November 12, 2011, 4,123,602 voters – 51% of 7,993,924 eligible voters according to the National ID database - actively registered for the period from early July till late August 2011.  86.4% of actively registered voters cast ballots during the October 23, 2011 NCA elections.  This visualization shows the actively registered voter turnout by district in the 2011 NCA elections.</p>"
+---
+<p>TODO </p>
+
+Make sure you have read the [documentation regarding installing and setting up a PostGIS-enabled database](!SITE.GITHUB!/blob/gh-pages/setup.md#data-management-and-maps).
+
+### Importing data to PostGIS
+
+This map is comprised of two datasets - [District shapefiles](https://github.com/fwelections/tunisia-election-data/tree/master/shapes) and tabular [registration and turnout data](https://github.com/fwelections/tunisia-election-data/blob/master/2011data/misc/Turnout.csv). To import the shapefiles see the [setup.md for instructions on importing geographic data](!SITE.GITHUB!/blob/gh-pages/setup.md#importing-geographic-data-to-postgis).
+
+TODO
+
+You're now ready to style your map in TileMill. Create a new project. In TileMill create a PostGIS layer following the [online documentation](http://mapbox.com/tilemill/docs/guides/postgis-work/), specifying the `eligibility` table.
+
+Paste in the appropriate html for the and [tooltip](!SITE.GITHUB!/blob/gh-pages/map-src/tooltip-src.html) (labeled 'eligibility')  See the [Eligibility TileMill project](!SITE.GITHUB!/tree/gh-pages/map-src/eligibility) for CartoCss styles.

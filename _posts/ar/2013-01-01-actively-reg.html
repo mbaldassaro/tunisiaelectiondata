@@ -1,0 +1,30 @@
+---
+layout: maps
+category: ar
+title: "تسجيل وإقبال الناخبين"
+subtitle: "تسليط الضوء على نسبة  المشاركة للناخبين المسجلين إراديا  في انتخابات المجلس لوطني التأسيسي"
+language: ar
+img: "active.png"
+map: "tunisia.map-76ss13lc"
+legend: false
+sources:
+  - title: "نسبة المشاركة للمسجلين "
+    url: "https://github.com/fwelections/tunisia-election-data/tree/master/2011data/misc"
+    description: "تحتوي هذه على الملفات   عدد الناخبين المسجلين ألياً و الذين أدلوا بأصواتهم والعدد الجملي  للناخبين المسجلين آلياً في الدائرة الانتخابية . تم الحصول على هذه البيانات  من تقرير  المجلس  الوطني التأسيسي حول الانتخابات ، التي نشرتها الهيئة  العليا المستقلة للانتخابات في فيفري  2012"
+description: "<p> الناخب المسجل إراديا هو الناخب الذي أكد  بيانات تسجيله  في مركز تسجيل الناخبين الراجع له بالنظر .  نتيجة لانخفاض نسبة إقبال الناخبين اتخذت  الهيئة العليا المستقلة  للانتخابات تدابير منها التمديد في   الموعد النهائي لتسجيل الناخبين  زيادة عدد مراكز التسجيل ونشر وحدات التسجيل المتنقلة، بهدف تسجيل أكبر عدد ممكن من الناخبين المؤهلين  قبل انتخابات المجلس  الوطني التأسيسي .
+ووفقا للإحصاءات التي نشرتها   الهيئة العليا المستقلة  للانتخابات في 12 نوفمبر، 2011، أقدم  4123602 ناخب على التسجيل إراديا ما يمثل 51٪ من مجموع ال 7993924 ناخب وفقا لقاعدة البيانات  لبطاقات التعريف الوطنية   للفترة من بداية شهر جويلية  حتى نهاية أوت 2011.  أدلى 84% من المسجلين إراديا بأصواتهم خلال انتخابات المجلس لوطني التأسيسي.
+ يظهر هذا العرض البياني نسبة   إقبال الناخبين المسجلين إراديا في انتخابات المجلس لوطني التأسيسي .</p>"
+---
+
+
+Make sure you have read the [documentation regarding installing and setting up a PostGIS-enabled database](!SITE.GITHUB!/blob/gh-pages/setup.md#data-management-and-maps).
+
+### Importing data to PostGIS
+
+This map is comprised of two datasets - [District shapefiles](https://github.com/fwelections/tunisia-election-data/tree/master/shapes) and tabular [registration and turnout data](https://github.com/fwelections/tunisia-election-data/blob/master/2011data/misc/Turnout.csv). To import the shapefiles see the [setup.md for instructions on importing geographic data](!SITE.GITHUB!/blob/gh-pages/setup.md#importing-geographic-data-to-postgis).
+
+TODO
+
+You're now ready to style your map in TileMill. Create a new project. In TileMill create a PostGIS layer following the [online documentation](http://mapbox.com/tilemill/docs/guides/postgis-work/), specifying the `eligibility` table.
+
+Paste in the appropriate html for the and [tooltip](!SITE.GITHUB!/blob/gh-pages/map-src/tooltip-src.html) (labeled 'eligibility')  See the [Eligibility TileMill project](!SITE.GITHUB!/tree/gh-pages/map-src/eligibility) for CartoCss styles.

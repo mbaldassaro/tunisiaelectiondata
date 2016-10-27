@@ -1,0 +1,176 @@
+---
+---
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
+<meta name='apple-mobile-web-app-status-bar-style' content='black' />
+<meta name='apple-mobile-web-app-capable' content='yes' />
+<link rel='shortcut icon' href='{{site.baseurl}}/img/favicon.ico' type='image/x-icon' />
+<title>Tunisia Election Data {% if page.url != '/index.html' %}| {{page.title}}{% endif %}</title>
+<link href='http://api.tiles.mapbox.com/mapbox.js/v0.6.7/mapbox.css' rel='stylesheet' />
+<link href='{{site.baseurl}}/site.css' rel='stylesheet' />
+<link href='{{site.baseurl}}/maps.css' rel='stylesheet' />
+<script src='http://api.tiles.mapbox.com/mapbox.js/v0.6.7/mapbox.js'></script>
+<script src='https://raw.github.com/mapbox/mapbox.js/master/extensions/share.js'></script>
+<script src='{{site.baseurl}}/site.js'></script>
+</head>
+<body class='{{page.permalink | replace: "/",""}}'>
+
+  <div id='masthead' class='map'>
+    <div class='limiter clearfix'>
+      <a href='{{site.baseurl}}/' class='title'><span class='icon logo'></span>Tunisia Election Data</a>
+    </div>
+  </div>
+
+  <div class='header'>
+    <div class='limiter clearfix'>
+      <div class='nav'>
+        <a href='{{site.baseurl}}/{{page.language}}/projects' class='button'>Projects</a>
+        <a href='#' id='toggle' class='icon toggle'>Toggle Header</a>
+      </div>
+    </div>
+    <div id='controls'></div>
+  </div>
+
+  <div class='map' id='map'></div>
+   <a href='#' id='separator'></a>
+   
+  <div id='shelf' class='shelf' >
+   <div id='description' class='shelf-inner'>
+   {% if page.description != empty %}
+	
+	{{ page.description }}
+	{% endif %}
+   </div>
+  <div id='sources' class='shelf-inner'>
+    {% if page.sources | size > 0 %}
+
+	{% for source in page.sources %}
+	<div class='source-entry'>
+	<h4 class='data-title'>{{source.title}}</h4>
+	<p>{{source.description | markdownify}}</p>
+	   {% if source.csv | size > 0 %}
+	   <a class='action data csv' href='{{source.csv}}'><span class='csv'></span>CSV</a>
+	   {% endif %}
+	   {% if source.pdf | size > 0 %}
+	   <a class='action data pdf' href='{{source.pdf}}'><span class='pdf'></span>PDF</a>
+	   {% endif %}
+	    {% if source.url | size > 0 %}
+	   <a class='action data link' href='{{source.url}}'><span class='link'></span>www</a>
+	   {% endif %}
+	</div>
+	{% endfor %}
+	{% endif %} 
+   </div>
+  <div id='methodology' class='shelf-inner'>
+	{% if page.content != empty %}
+
+	{{ page.content | replace: '!SITE.GITHUB!', site.github  | markdownify }}
+	{% endif %}
+   </div>
+</div>
+  <div class='downcontrols'>
+      <a id="desc" href="#" class='active' rel='description'><span>Description</span></a>
+      <a id="about" href="#" rel='sources'><span>About the data</span></a>
+      <a href="#" id="meth" rel='methodology'><span>Methodology</span></a>
+ </div>
+  <div class='map-overlay {{ page.url | replace: "/","" }}'>
+    <div id='infographic' style='display:none'>
+  </div>
+  
+
+</div>
+  <div class='attribution'>
+    A project by
+    <a href='http://www.democracyinternational.com'>Democracy International</a>, <a href='http://newrightsgroup.net'>New Rights Group</a> and <a href='http://developmentseed.org'>DevelopmentSeed</a> 
+  </div>
+</div>
+
+<style>
+  /* Using {{page.language}} find out the .tooltip lang-*
+   * We should display:block to. */
+  .tooltip .lang-{{page.language}},
+  .tootip .lang-{{page.language}} {
+    display:block!important;
+  }
+</style>
+
+{% if page.map != empty %}
+
+<script>
+$(function () {
+  mapbox.load('{{ page.map }}', function(o) {
+      var map = mapbox.map('map');
+      map.addLayer(o.layer)
+      map.setZoomRange(7, 12);
+      
+      map.zoom(8).center({lat:36.18, lon:10.569})
+      map.setPanLimits([{ lat: 2.0532, lon:4.2235 }, { lat: 42.5925, lon:17.8268 }]);
+
+
+      {% if page.legend == true %}
+       map.ui.legend.add().content("<div class='cancelled-ballots'><div class='legend-title'>Ballots invalidated at counting<\/div><div class='legend-scale'>  <ul class='legend-labels'>    <li><span style='border-color:#07f;background:#07f;'><\/span>Circle size based on percent votes cancelled<\/li>  <\/ul><\/div></div><style type='text\/css'>  .wax-legend .legend-title {    text-align: left;    margin-bottom: 5px;    font-weight: bold;    font-size: 90%;    }  .wax-legend .legend-scale ul {    margin: 0;    margin-bottom: 5px;    padding: 0;    float: left;    list-style: none;    }  .wax-legend .legend-scale ul li {    font-size: 80%;    list-style: none;    margin-left: 0;    line-height: 18px;    }  .wax-legend ul.legend-labels li span {    display: block;    float: left;    height: 14px;    width: 14px;    margin-right: 5px;    margin-left: 0;    border-width: 2px;    border-style: solid;    border-radius: 9px;    }</style><div class='pol-party'><div class='legend-title'>Party share of electorate<\/div><div class='legend-scale'>  <ul class='legend-labels'>    <li id='ennahdha'>Ennahdha<\/li>    <li id='cpr'>CPR<\/li>    <li id='ettakatol'>Ettakatol<\/li>  <\/ul><\/div></div><style type='text\/css'>  .wax-legend .legend-title {    text-align: left;    margin-bottom: 5px;    font-weight: bold;    font-size: 90%;    }  .wax-legend .legend-scale ul {    margin: 0;    margin-bottom: 5px;    padding: 0;    float: left;    list-style: none;    }  .wax-legend .legend-scale ul li {    list-style: none;    margin-left: 0;    line-height: 18px;    }   #ennahdha { color: #07f; }   #cpr { color: #4c0; }   #ettakatol { color: #f30; }<\/style>");
+     {% endif %}
+
+    map.interaction.auto()
+    map.interaction.on('on');
+    map.interaction.off('off');
+    map.interaction.on({
+        on: function(o) {
+            $('.value').digits();
+        },
+        off: function(){
+          $('.wax-tooltip').hide();
+        }
+    });
+
+      var c = document.getElementById('controls');
+      map.ui.zoomer.add().appendTo(c);
+      mapbox.share().add().appendTo(c);
+      map.ui.hash.add();
+  });
+
+  //Modal Popup box for data
+  $('a#learn-more').bind('click', openModal);
+
+  function openModal() {
+    $('#modal').fadeIn('fast');
+    window.location.hash = 'learn-more'
+    return false;
+  }
+
+  if (location.hash === '#learn-more') {
+    openModal();
+  }
+
+  $('.close').click(function (e) {
+    $('#overlay, #modal').fadeOut();
+    window.location.hash = '';
+    return false;
+  });
+});
+
+{% endif %}
+  $('#toggle').click(function(){
+    $('.header').toggleClass('active-header', 20000 );
+    $('#my-slider').toggle()
+  })
+
+  
+</script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-88478-37']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</body>
+</html>
+

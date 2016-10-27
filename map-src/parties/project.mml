@@ -1,0 +1,71 @@
+{
+  "bounds": [
+    7.6135,
+    31.6908,
+    11.2939,
+    37.6838
+  ],
+  "center": [
+    9.9646,
+    34.8228,
+    7
+  ],
+  "format": "png",
+  "interactivity": {
+    "layer": "parties",
+    "template_teaser": "<div class=\"tooltip\">\n\t<div class=\"lang-en\">\n\t\t<h3>Party share of electorate</h3>\n\t\t<div class=\"district\">\n\t\t\t<span class=\"label\">District:</span> \n\t\t\t<span class=\"value\">{{{district}}}</span> \n\t\t</div>\n\t\t<div class=\"ratio_n\">\n\t\t\t<span class=\"label\">Ennahdha:</span> \n\t\t\t<span class=\"value\">{{{ratio_n}}}&#37;</span>\n\t\t</div>\n\t\t<div class=\"ratio_c\">\n\t\t\t<span class=\"label\">C.P.R.:</span>\n\t\t\t<span class=\"value\">{{{ratio_c}}}&#37;</span>\n\t\t</div>\n\t\t<div class=\"ratio_t\">\n\t\t\t<span class=\"label\">Ettakatol:</span>\n\t\t\t<span class=\"value\">{{{ratio_t}}}&#37;</span>\n\t\t</div>\n\t</div>\n\t<div class=\"lang-fr\">\n\t\t<h3>Party share of electorate </h3>\n\t\t<div class=\"district\">\n\t\t\t<span class=\"label\">District:</span> \n\t\t\t<span class=\"value\">{{{district}}}</span> \n\t\t</div>\n\t\t<div class=\"ratio_n\">\n\t\t\t<span class=\"label\">Ennahdha:</span> \n\t\t\t<span class=\"value\">{{{ratio_n}}}&#37;</span>\n\t\t</div>\n\t\t<div class=\"ratio_c\">\n\t\t\t<span class=\"label\">C.P.R.:</span>\n\t\t\t<span class=\"value\">{{{ratio_c}}}&#37;</span>\n\t\t</div>\n\t\t<div class=\"ratio_t\">\n\t\t\t<span class=\"label\">Ettakatol:</span>\n\t\t\t<span class=\"value\">{{{ratio_t}}}&#37;</span>\n\t\t</div>\n\t</div>\n\t<div class=\"lang-ar\">\n\t\t<h3>Party share of electorate</h3>\n\t\t<div class=\"district\">\n\t\t\t<span class=\"label\">District:</span> \n\t\t\t<span class=\"value\">{{{district}}}</span> \n\t\t</div>\n\t\t<div class=\"ratio_n\">\n\t\t\t<span class=\"label\">Ennahdha:</span> \n\t\t\t<span class=\"value\">{{{ratio_n}}}&#37;</span>\n\t\t</div>\n\t\t<div class=\"ratio_c\">\n\t\t\t<span class=\"label\">C.P.R.:</span>\n\t\t\t<span class=\"value\">{{{ratio_c}}}&#37;</span>\n\t\t</div>\n\t\t<div class=\"ratio_t\">\n\t\t\t<span class=\"label\">Ettakatol:</span>\n\t\t\t<span class=\"value\">{{{ratio_t}}}&#37;</span>\n\t\t</div>\n\t</div>\n",
+    "fields": [
+      "district",
+      "ratio_n",
+      "ratio_c",
+      "ratio_t",
+      "district_id"
+    ]
+  },
+  "minzoom": 0,
+  "maxzoom": 12,
+  "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+  "Stylesheet": [
+    "vars.mss",
+    "nahdha.mss",
+    "cpr.mss",
+    "takattoul.mss",
+    "nahdha-chloro.mss"
+  ],
+  "Layer": [
+    {
+      "extent": [
+        7.530076000000001,
+        30.236809999999995,
+        11.598271,
+        37.559861
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "( select * from parties1) as data",
+        "key_field": "district_id",
+        "geometry_field": "the_geom",
+        "extent_cache": "auto",
+        "extent": "7.530076,30.23681,11.598271,37.559861",
+        "dbname": "tunisia",
+        "user": "postgres",
+        "id": "parties",
+        "project": "tunisia-parties",
+        "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
+      },
+      "id": "parties",
+      "class": "",
+      "srs-name": "WGS84",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "advanced": {},
+      "name": "parties"
+    }
+  ],
+  "scale": 1,
+  "metatile": 2,
+  "_basemap": "tunisia.map-ljvg81zf",
+  "name": "",
+  "description": "",
+  "attribution": "",
+  "legend": "<div class='legend-title'>Party share of electorate</div>\n<div class='legend-scale'>\n    <span id='ennahdha'>Ennahdha</span>\n    <span id='cpr'>CPR</span>\n    <span id='ettakatol'>Ettakatol</span>\n</div>\n\n<style type='text/css'>\n  .wax-legend .legend-title {\n    text-align: left;\n    margin-bottom: 5px;\n    font-weight: bold;\n    font-size: 90%;\n    }\n  .wax-legend .legend-scale ul {\n    margin: 0;\n    margin-bottom: 5px;\n    padding: 0;\n    float: left;\n    line-height: 18px;\n    list-style: none;\n    }\n   #ennahdha { color: #07f; }\n   #cpr { color: #4c0; }\n   #ettakatol { color: #f30; }\n</style>"
+}

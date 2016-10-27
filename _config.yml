@@ -1,0 +1,12 @@
+auto: true
+server: true
+permalink: /:categories/:title
+baseurl: /databrowser
+github: "http://github.com/fwelections/databrowser"
+languages:
+  - name: 'English'
+    key: 'en'
+  - name: 'French'
+    key: 'fr'
+  - name: 'Arabic'
+    key: 'ar'

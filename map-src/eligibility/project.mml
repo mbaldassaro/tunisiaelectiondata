@@ -1,0 +1,68 @@
+{
+  "bounds": [
+    7.3279,
+    30.1546,
+    11.7664,
+    37.3614
+  ],
+  "center": [
+    9.6021,
+    33.5231,
+    7
+  ],
+  "format": "png",
+  "interactivity": {
+    "layer": "eligibility",
+    "template_teaser": "<div class=\"tooltip\">\n\t<div class=\"lang-en\">\n\t\t<h3>Ratio of registered to eligible voters </h3>\n\t\t<div class=\"district\">\n\t\t\t<span class=\"label\">District:</span> \n\t\t\t<span class=\"value\">{{{circo_na_1}}}</span> \n\t\t</div>\n\t\t<div class=\"delegation\">\n\t\t\t<span class=\"label\">Delegation:</span> \n\t\t\t<span class=\"value\">{{{name_deleg}}}</span> \n\t\t</div>\n\t\t<div class=\"registered\">\n\t\t\t<span class=\"label\">Registered Voters:</span> \n\t\t\t<span class=\"value\">{{{actively_registred}}}</span> \n\t\t</div>\n\t\t<div class=\"eligible\">\n\t\t\t<span class=\"label\">Eligible voters:</span> \n\t\t\t<span class=\"value\">{{{eligible_voters}}}</span> \n\t\t</div>\n\t\t<div class=\"ratio\">\n\t\t\t<span class=\"label\">Percent:</span> \n\t\t\t<span class=\"value\">{{{ratio_c}}}</span> \n\t\t</div>\n\t</div>\n\t<div class=\"lang-fr\">\n\t\t<h3>Ratio of registered to eligible voters </h3>\n\t\t<div class=\"district\">\n\t\t\t<span class=\"label\">District:</span> \n\t\t\t<span class=\"value\">{{{circo_na_1}}}</span> \n\t\t</div>\n\t\t<div class=\"delegation\">\n\t\t\t<span class=\"label\">Delegation:</span> \n\t\t\t<span class=\"value\">{{{name_deleg}}}</span> \n\t\t</div>\n\t\t<div class=\"registered\">\n\t\t\t<span class=\"label\">Registered Voters:</span> \n\t\t\t<span class=\"value\">{{{actively_registred}}}</span> \n\t\t</div>\n\t\t<div class=\"eligible\">\n\t\t\t<span class=\"label\">Eligible voters:</span> \n\t\t\t<span class=\"value\">{{{eligible_voters}}}</span> \n\t\t</div>\n\t\t<div class=\"ratio\">\n\t\t\t<span class=\"label\">Percent:</span> \n\t\t\t<span class=\"value\">{{{ratio_c}}}</span> \n\t\t</div>\n\t</div>\n\t<div class=\"lang-ar\">\n\t\t<h3>Ratio of registered to eligible voters</h3>\n\t\t<div class=\"district\">\n\t\t\t<span class=\"label\">District:</span> \n\t\t\t<span class=\"value\">{{{circo_name}}}</span> \n\t\t</div>\n\t\t<div class=\"delegation\">\n\t\t\t<span class=\"label\">Delegation:</span> \n\t\t\t<span class=\"value\">{{{deleg_name}}}</span> \n\t\t</div>\n\t\t<div class=\"registered\">\n\t\t\t<span class=\"label\">Registered Voters:</span> \n\t\t\t<span class=\"value\">{{{actively_registred}}}</span> \n\t\t</div>\n\t\t<div class=\"eligible\">\n\t\t\t<span class=\"label\">Eligible voters:</span> \n\t\t\t<span class=\"value\">{{{eligible_voters}}}</span> \n\t\t</div>\n\t\t<div class=\"ratio\">\n\t\t\t<span class=\"label\">Percent:</span> \n\t\t\t<span class=\"value\">{{{ratio_c}}}</span> \n\t\t</div>\n\t</div>\n</div>",
+    "fields": [
+      "circo_na_1",
+      "name_deleg",
+      "actively_registred",
+      "eligible_voters",
+      "ratio_c",
+      "circo_name",
+      "deleg_name",
+      "gid"
+    ]
+  },
+  "minzoom": 0,
+  "maxzoom": 12,
+  "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+  "Stylesheet": [
+    "style.mss"
+  ],
+  "Layer": [
+    {
+      "geometry": "polygon",
+      "extent": [
+        7.530076000000001,
+        30.236809999999995,
+        11.598271,
+        37.559861
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "del_ratio",
+        "key_field": "gid",
+        "geometry_field": "the_geom",
+        "extent_cache": "auto",
+        "extent": "7.530076,30.23681,11.598271,37.559861",
+        "dbname": "tunisia",
+        "user": "postgres"
+      },
+      "id": "eligibility",
+      "class": "",
+      "srs-name": "WGS84",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "advanced": {},
+      "name": "eligibility"
+    }
+  ],
+  "scale": 1,
+  "metatile": 2,
+  "_basemap": "tunisia.map-u3z7fdnm",
+  "name": "",
+  "description": "",
+  "attribution": "",
+  "legend": ""
+}

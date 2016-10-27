@@ -1,0 +1,76 @@
+{
+  "bounds": [
+    7.218,
+    32.7318,
+    11.8323,
+    37.5968
+  ],
+  "center": [
+    9.7284,
+    34.8611,
+    7
+  ],
+  "format": "png",
+  "interactivity": {
+    "layer": "wasted",
+    "template_teaser": "<div class=\"tooltip\">\n\t<div class=\"lang-en\">\n\t\t<h3>Percent of ballots not counted</h3>\n\t\t<div class=\"cancelled\">\n\t\t\t<span class=\"label\">Cancelled Ballots:</span> \n\t\t\t<span class='value'>{{{cancelled_ballots}}}</span> \n\t\t</div>\n\t\t<div class=\"blank\">\n\t\t\t<span class=\"label\">Blank Ballots:</span> \n\t\t\t<span class='value'>{{{blank_ballots}}}</span> \n\t\t</div>\n\t\t<div class=\"wasted\">\n\t\t\t<span class=\"label\">Votes for non-winning parties:</span> \n\t\t\t<span class='value'>{{{wasted}}}</span> \n\t\t</div>\n\t\t<div class=\"total_nc\">\n\t\t\t<span class=\"label\">Total Ballots not counted:</span> \n\t\t\t<span class='value'>{{{map}}}</span> \n\t\t</div>\n\t\t<div class=\"total_votes\">\n\t\t\t<span class=\"label\">Total Votes:</span> \n\t\t\t<span class='value'>{{{total_votes}}}</span> \n\t\t</div>\n\t\t<div class=\"pct_nc\">\n\t\t\t<span class=\"label\">Percent Ballots not Counted:</span> \n\t\t\t<span class='value'>{{{pct_s}}}</span> \n\t\t</div>\n\t</div>\n\t<div class=\"lang-fr\">\n\t\t<h3>Percent of ballots not counted</h3>\n\t\t<div class=\"cancelled\">\n\t\t\t<span class=\"label\">Cancelled Ballots:</span> \n\t\t\t<span class='value'>{{{cancelled_ballots}}}</span> \n\t\t</div>\n\t\t<div class=\"blank\">\n\t\t\t<span class=\"label\">Blank Ballots:</span> \n\t\t\t<span class='value'>{{{blank_ballots}}}</span> \n\t\t</div>\n\t\t<div class=\"wasted\">\n\t\t\t<span class=\"label\">Votes for non-winning parties:</span> \n\t\t\t<span class='value'>{{{wasted}}}</span> \n\t\t</div>\n\t\t<div class=\"total_nc\">\n\t\t\t<span class=\"label\">Total Ballots not counted:</span> \n\t\t\t<span class='value'>{{{map}}}</span> \n\t\t</div>\n\t\t<div class=\"total_votes\">\n\t\t\t<span class=\"label\">Total Votes:</span> \n\t\t\t<span class='value'>{{{total_votes}}}</span> \n\t\t</div>\n\t\t<div class=\"pct_nc\">\n\t\t\t<span class=\"label\">Percent Ballots not Counted:</span> \n\t\t\t<span class='value'>{{{pct_s}}}</span> \n\t\t</div>\n\t</div>\n\t<div class=\"lang-ar\">\n\t\t<h3>Percent of ballots not counted</h3>\n\t\t<div class=\"cancelled\">\n\t\t\t<span class=\"label\">Cancelled Ballots:</span> \n\t\t\t<span class='value'>{{{cancelled_ballots}}}</span> \n\t\t</div>\n\t\t<div class=\"blank\">\n\t\t\t<span class=\"label\">Blank Ballots:</span> \n\t\t\t<span class='value'>{{{blank_ballots}}}</span> \n\t\t</div>\n\t\t<div class=\"wasted\">\n\t\t\t<span class=\"label\">Votes for non-winning parties:</span> \n\t\t\t<span class='value'>{{{wasted}}}</span> \n\t\t</div>\n\t\t<div class=\"total_nc\">\n\t\t\t<span class=\"label\">Total Ballots not counted:</span> \n\t\t\t<span class='value'>{{{map}}}</span> \n\t\t</div>\n\t\t<div class=\"total_votes\">\n\t\t\t<span class=\"label\">Total Votes:</span> \n\t\t\t<span class='value'>{{{total_votes}}}</span> \n\t\t</div>\n\t\t<div class=\"pct_nc\">\n\t\t\t<span class=\"label\">Percent Ballots not Counted:</span> \n\t\t\t<span class='value'>{{{pct_s}}}</span> \n\t\t</div>\n\t</div>\n</div>",
+    "fields": [
+      "cancelled_ballots",
+      "blank_ballots",
+      "wasted",
+      "map",
+      "total_votes",
+      "pct_s",
+      "cir_id"
+    ]
+  },
+  "minzoom": 0,
+  "maxzoom": 22,
+  "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+  "Stylesheet": [
+    "style.mss"
+  ],
+  "Layer": [
+    {
+      "id": "countries",
+      "name": "countries",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "geometry": "polygon",
+      "Datasource": {
+        "file": "http://mapbox-geodata.s3.amazonaws.com/natural-earth-1.4.0/cultural/10m-admin-0-countries.zip",
+        "type": "shape"
+      }
+    },
+    {
+      "extent": [
+        7.530076000000001,
+        30.236809999999995,
+        11.598271,
+        37.559861
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "( select\n  the_geom,\n  cir_id,\n  circ_name,\n  blank_ballots,\n  cancelled_ballots,\n  wasted,\n  map,\n  total_votes,\n  round((map / total_votes * 100)) as pct_n,\n  cast(round((map / total_votes * 100)) as text)||'%' as pct_s,\n  cast(round((map / total_votes * 100)) as text)||'%'||E' \\n'||circ_name as display\n  from districts a join wasted b \n  on circo_id = cir_id \n) as data",
+        "key_field": "cir_id",
+        "geometry_field": "the_geom",
+        "extent_cache": "auto",
+        "extent": "7.530076,30.23681,11.598271,37.559861",
+        "dbname": "tunisia",
+        "user": "postgres"
+      },
+      "id": "wasted",
+      "class": "",
+      "srs-name": "WGS84",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "advanced": {},
+      "name": "wasted"
+    }
+  ],
+  "scale": 1,
+  "metatile": 2,
+  "_basemap": "tunisia.map-u26xc2ee",
+  "name": "",
+  "description": "",
+  "attribution": "",
+  "legend": ""
+}

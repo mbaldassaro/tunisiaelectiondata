@@ -1,0 +1,67 @@
+{
+  "bounds": [
+    7.218,
+    32.7318,
+    11.8323,
+    37.5968
+  ],
+  "center": [
+    9.5801,
+    35.1379,
+    6
+  ],
+  "format": "png",
+  "interactivity": {
+    "layer": "cancelled",
+    "template_teaser": "<!-- cancelled -->\n\n<div class=\"tooltip\">\n\t<div class=\"lang-en\">\n\t\t<h3>Percent of votes canceled at counting</h3>\n\t\t<div class=\"cancelled\">\n\t\t\t<span class=\"label\">Cancelled Ballots:</span> \n\t\t\t<span class='value'>{{{cancelled_ballots}}}</span> \n\t\t</div>\n\t\t<div class=\"total_voters\">\n\t\t\t<span class=\"label\">Total voters:</span> \n\t\t\t<span class='value'>{{{total_voters}}}</span> \n\t\t</div>\n\t\t<div class=\"pct-cancelled\">\n\t\t\t<span class=\"label\">Percent of Ballots cancelled:</span> \n\t\t\t<span class='value'>{{{pct_cancelled_c}}}</span> \n\t\t</div>\n\t</div>\n\t<div class=\"lang-fr\">\n\t\t<h3>Percent of votes cancelled at counting</h3>\n\t\t<div class=\"cancelled\">\n\t\t\t<span class=\"label\">Cancelled Ballots:</span> \n\t\t\t<span class='value'>{{{cancelled_ballots}}}</span> \n\t\t</div>\n\t\t<div class=\"total_voters\">\n\t\t\t<span class=\"label\">Total voters:</span> \n\t\t\t<span class='value'>{{{total_voters}}}</span> \n\t\t</div>\n\t\t<div class=\"pct-cancelled\">\n\t\t\t<span class=\"label\">Percent of Ballots cancelled:</span> \n\t\t\t<span class='value'>{{{pct_cancelled_c}}}</span> \n\t\t</div>\n\t</div>\n\t<div class=\"lang-ar\">\n\t\t<h3>Percent of votes cancelled at counting</h3>\n\t\t<div class=\"cancelled\">\n\t\t\t<span class=\"label\">Cancelled Ballots:</span> \n\t\t\t<span class='value'>{{{cancelled_ballots}}}</span> \n\t\t</div>\n\t\t<div class=\"total_voters\">\n\t\t\t<span class=\"label\">Total voters:</span> \n\t\t\t<span class='value'>{{{total_voters}}}</span> \n\t\t</div>\n\t\t<div class=\"pct-cancelled\">\n\t\t\t<span class=\"label\">Percent of Ballots cancelled:</span> \n\t\t\t<span class='value'>{{{pct_cancelled_c}}}</span> \n\t\t</div>\n\t</div>\n</div>",
+    "fields": [
+      "cancelled_ballots",
+      "total_voters",
+      "pct_cancelled_c",
+      "id"
+    ]
+  },
+  "minzoom": 0,
+  "maxzoom": 13,
+  "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+  "Stylesheet": [
+    "style.mss"
+  ],
+  "Layer": [
+    {
+      "geometry": "point",
+      "extent": [
+        8.357331,
+        32.91454,
+        180,
+        85.051
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "( select \n\t*,\n\tround((cancelled_ballots / total_voters * 100),1) as pct_cancelled,\n\tcast(round((cancelled_ballots / total_voters * 100), 2) as text)||'%' as pct_cancelled_c\n  from pc_results \n order by pct_cancelled desc NULLS LAST\n ) as data",
+        "key_field": "id",
+        "geometry_field": "geom",
+        "extent_cache": "auto",
+        "extent": "8.357331,32.91454,10365980,35504914",
+        "dbname": "tunisia",
+        "user": "postgres",
+        "id": "cancelled",
+        "project": "tunisia-elections",
+        "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
+      },
+      "id": "cancelled",
+      "class": "",
+      "srs-name": "WGS84",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "advanced": {},
+      "name": "cancelled"
+    }
+  ],
+  "scale": 1,
+  "metatile": 2,
+  "_basemap": "tunisia.map-qyh27u2n",
+  "name": "",
+  "description": "",
+  "attribution": "",
+  "legend": "<div class='legend-title'>Ballots invalidated at counting</div>\n<div class='legend-scale'>\n  <ul class='legend-labels'>\n    <li><span style='border-color:#07f;background:#07f;'></span>Circle size based on percent votes canceled</li>\n  </ul>\n</div>\n\n<style type='text/css'>\n  .wax-legend .legend-title {\n    text-align: left;\n    margin-bottom: 5px;\n    font-weight: bold;\n    font-size: 90%;\n    }\n  .wax-legend .legend-scale ul {\n    margin: 0;\n    margin-bottom: 5px;\n    padding: 0;\n    float: left;\n    list-style: none;\n    }\n  .wax-legend .legend-scale ul li {\n    font-size: 80%;\n    list-style: none;\n    margin-left: 0;\n    line-height: 18px;\n    }\n  .wax-legend ul.legend-labels li span {\n    display: block;\n    float: left;\n    height: 14px;\n    width: 14px;\n    margin-right: 5px;\n    margin-left: 0;\n    border-width: 2px;\n    border-style: solid;\n    border-radius: 9px;\n\n    }\n</style>"
+}

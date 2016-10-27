@@ -1,0 +1,30 @@
+---
+layout: maps
+category: fr
+title: "L'inscription des électeurs et la participation électorale"
+subtitle: "Témoignant du niveau de participation des électeurs activement inscrits dans les élections de l'Assemblée Nationale Constituante 2011"
+language: fr
+img: "active.png"
+map: "tunisia.map-76ss13lc"
+legend: false
+sources:
+  - title: "Pourcentage de participation des électeurs"
+    url: "https://github.com/fwelections/tunisia-election-data/tree/master/2011data/misc"
+    description: "Ce fichier  CSV contient le nombre d'électeurs activement enregistrés qui ont voté et le nombre total d'électeurs activement enregistrés par circonscription électorale. Ces données ont été obtenues à partir du Rapport (PDF) sur les élections de l'Assemblée Nationale Constituante, publié par l’ISIE en Février 2012 et converti au format CSV par OpenGovTN."
+description: "<p>Un électeur activement enregistré représente un électeur potentiel selon la liste électorale de référence, qui a choisi de se déplacer au centre d'inscription électorale pour enregistrer ses données avant la tenue des élections.
+Pendant les élections de l'Assemblé  Nationale Constituante de 2011, l'ISIE. a fortement encouragé les électeurs potentiels à accomplir cette action et ce par le déploiement  de divers efforts tels que le prolongement de la date limite prévue pour cette opération, l'augmentation des centres d'inscription, le déploiement de centres d'inscription mobiles et des campagnes publicitaires de proximité et ce suite au faible taux de participation initialement enregistré lors de la première date limite qui a été prévue pour début Août 2011.  
+Selon “les statistiques complètes et approfondies de dépouillement des votes” publiées par l’ISIE le 12 Novembre 2011, 4.123.602 électeurs parmi 7.993.924 votants potentiels suivant la base du registre des données des cartes d’identité nationales, se sont enregistrés volontairement pendant la période allant de début Juillet jusqu’à fin Août 2011, soit 51% des électeurs potentiels.  86,4% de ces électeurs ont accomplis leur devoir de vote lors des élections du 23 Octobre 2011.</p>"
+---
+
+
+Make sure you have read the [documentation regarding installing and setting up a PostGIS-enabled database](!SITE.GITHUB!/blob/gh-pages/setup.md#data-management-and-maps).
+
+### Importing data to PostGIS
+
+This map is comprised of two datasets - [District shapefiles](https://github.com/fwelections/tunisia-election-data/tree/master/shapes) and tabular [registration and turnout data](https://github.com/fwelections/tunisia-election-data/blob/master/2011data/misc/Turnout.csv). To import the shapefiles see the [setup.md for instructions on importing geographic data](!SITE.GITHUB!/blob/gh-pages/setup.md#importing-geographic-data-to-postgis).
+
+TODO
+
+You're now ready to style your map in TileMill. Create a new project. In TileMill create a PostGIS layer following the [online documentation](http://mapbox.com/tilemill/docs/guides/postgis-work/), specifying the `eligibility` table.
+
+Paste in the appropriate html for the and [tooltip](!SITE.GITHUB!/blob/gh-pages/map-src/tooltip-src.html) (labeled 'eligibility')  See the [Eligibility TileMill project](!SITE.GITHUB!/tree/gh-pages/map-src/eligibility) for CartoCss styles.

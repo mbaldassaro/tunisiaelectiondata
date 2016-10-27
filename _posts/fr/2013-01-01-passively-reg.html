@@ -1,0 +1,28 @@
+---
+layout: maps
+category: fr
+title: "L'admissibilité des électeurs et la participation électorale"
+subtitle: "Témoignant du niveau de participation des électeurs passivement inscrits dans les élections de l'Assemblée Nationale Constituante 2011"
+language: fr
+img: "passive.png"
+map: "tunisia.map-7soi1yyn,tunisia.passivelyregistredturnout"
+legend: false
+sources:
+  - title: "Pourcentage de participation des électeurs"
+    url: "https://github.com/fwelections/tunisia-election-data/blob/master/2011data/misc/Turnout.csv"
+    description: "Cet ensemble de données a annulé les bulletins de vote lors des élections de 2011 en Tunisie. Cet ensemble de données a été obtenu à partir du rapport (PDF)  de l'Assemblée Nationale Constituante sur les élections publié par l’ISIE en Février 2012 et fourni sous forme de fichiers .Json par OpenGovTN."
+description: "<p>un électeur passivement enregistré est un citoyen jouissant de son droit de vote  conformément aux stipulations de la loi électorale du pays et qui est automatiquement enregistré au niveau de la liste des électeurs, généralement selon la base de données la plus fiable dont dispose les autorités locales. Lors des élections de l'Assemblée Nationale Constituante de 2011, on a adopté la base de données des cartes d’identité nationales comme base électorale. Cependant on a  parallèlement encouragé les électeurs potentiels à s'enregistrer activement en vérifiant leurs données au niveau des centres d'inscription électorale.
+Selon “les statistiques complètes et approfondies de dépouillement des votes” publié par l’ISIE le 12 Novembre 2011, 3.870.322 électeurs parmi 7.993.924 votants potentiels suivant la base du registre des données des cartes d’identité nationales n'ont pas fait la vérification et par conséquent ont été considérés comme électeurs passivement enregistrés, soit 49% des électeurs potentiels.  Seul 14% de ces électeurs ont répondu présents lors des élections du 23 Octobre 2011. Cette visualisation affiche le taux de participation par circonscription des électeurs inscrits automatiquement aux élections de l’A.N.C. de 2011</p>"
+---
+<p>Tunisia is made up of 24 governorates, which are subdivided into 264 delegations. This map visualizes the disparity between actively registered voters and eligible voters by delegation. Actively registered voters meet the age and citizenship requirements for voting and have registered to vote. Eligible voters meet the requirements to vote, but have not actively registered to vote. </p>
+
+Make sure you have read the [documentation regarding installing and setting up a PostGIS-enabled database](!SITE.GITHUB!/blob/gh-pages/setup.md#data-management-and-maps).
+
+### Importing data to PostGIS
+
+This map is comprised of two datasets - [district shapefiles](https://github.com/fwelections/tunisia-election-data/tree/master/shapes) and tabular [eligibility + registration data](https://github.com/fwelections/tunisia-election-data/blob/master/2011data/misc/Turnout.csv). To import the shapefiles see the [setup.md for instructions on importing geographic data](!SITE.GITHUB!/blob/gh-pages/setup.md#importing-geographic-data-to-postgis).
+
+
+You're now ready to style your map in TileMill. Create a new project. In TileMill create a PostGIS layer following the [online documentation](http://mapbox.com/tilemill/docs/guides/postgis-work/), specifying the `eligibility` table.
+
+Paste in the appropriate html for the and [tooltip](!SITE.GITHUB!/blob/gh-pages/map-src/tooltip-src.html) (labeled 'eligibility')  See the [Eligibility TileMill project](!SITE.GITHUB!/tree/gh-pages/map-src/eligibility) for CartoCss styles.
