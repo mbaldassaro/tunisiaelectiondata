@@ -1,6 +1,7 @@
 auto: true
 server: true
 permalink: /:categories/:title
+github: "http://github.com/mbaldassaro/tunisiaelectiondata"
 baseurl: /tunisiaelectiondata
 languages:
   - name: 'English'
